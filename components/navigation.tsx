@@ -9,11 +9,6 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
-  const companies = [
-    { name: "Volt Wheels", slug: "volt-wheels", color: "#0066FF" },
-    { name: "SRS Enterprise", slug: "srs-enterprise", color: "#1DB954" },
-    { name: "NRG Future", slug: "nrg-future", color: "#FF6B35" },
-  ]
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -78,20 +73,10 @@ export function Navigation() {
               <div className={`absolute left-0 mt-2 w-56 bg-card border border-border rounded-lg shadow-lg transition-all ${openDropdown === "products" ? "opacity-100 visible" : "opacity-0 invisible"}`}>
                 <Link
                   href="/products/euler-motors"
-                  className="block px-4 py-3 text-foreground hover:bg-secondary first:rounded-t-lg hover:text-primary transition font-semibold"
+                  className="block px-4 py-3 text-foreground hover:bg-secondary rounded-lg hover:text-primary transition font-semibold"
                 >
                   Euler Motors Vehicles
                 </Link>
-                <div className="border-t border-border my-1" />
-                {companies.map((company) => (
-                  <Link
-                    key={company.slug}
-                    href={`/companies/${company.slug}`}
-                    className="block px-4 py-3 text-foreground hover:bg-secondary last:rounded-b-lg hover:text-primary transition"
-                  >
-                    {company.name}
-                  </Link>
-                ))}
               </div>
             </div>
 
@@ -121,6 +106,9 @@ export function Navigation() {
               </div>
             </div>
 
+            <Link href="/leasing" className="text-foreground hover:text-primary transition-colors font-medium">
+              Leasing
+            </Link>
             <Link href="/sustainability" className="text-foreground hover:text-primary transition-colors font-medium">
               Sustainability
             </Link>
@@ -174,16 +162,6 @@ export function Navigation() {
                   >
                     Euler Motors Vehicles
                   </Link>
-                  {companies.map((company) => (
-                    <Link
-                      key={company.slug}
-                      href={`/companies/${company.slug}`}
-                      className="block py-1 text-muted-foreground hover:text-primary"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {company.name}
-                    </Link>
-                  ))}
                 </div>
               </div>
               <div className="px-4 py-2">
@@ -193,6 +171,13 @@ export function Navigation() {
                   <Link href="/iot-tech" className="block py-1 text-muted-foreground hover:text-primary" onClick={() => setIsOpen(false)}>IoT Driven Tech</Link>
                 </div>
               </div>
+              <Link
+                href="/leasing"
+                className="block px-4 py-2 text-foreground hover:text-primary rounded-lg transition"
+                onClick={() => setIsOpen(false)}
+              >
+                Leasing
+              </Link>
               <Link
                 href="/sustainability"
                 className="block px-4 py-2 text-foreground hover:text-primary rounded-lg transition"

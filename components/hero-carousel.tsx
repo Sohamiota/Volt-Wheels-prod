@@ -12,14 +12,14 @@ const slides = [
     highlight: "Innovation is Our Foundation",
   },
   {
-    title: "Sustainable Energy Solutions",
-    description: "Comprehensive renewable energy systems and smart grid technology powering tomorrow's infrastructure with reliable, efficient solutions.",
+    title: "EV Charging Infrastructure",
+    description: "Comprehensive charging solutions for residential, commercial, and fleet applications. Smart, reliable, and efficient EV charging infrastructure.",
     highlight: "Performance & Reliability",
   },
   {
-    title: "Integrated Mobility Ecosystem",
+    title: "Your Trusted EV Partner",
     description: "Complete EV mobility solutions from charging infrastructure to fleet management, designed for seamless integration and maximum efficiency.",
-    highlight: "Your Trusted Partner",
+    highlight: "Excellence in Every Charge",
   },
 ]
 

@@ -1,50 +1,22 @@
-import { CompanyCard } from "@/components/company-card"
 import { HeroCarousel } from "@/components/hero-carousel"
 import { Navigation } from "@/components/navigation"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Grid3X3, Leaf, Wifi, Zap } from "lucide-react"
+import { ArrowRight, Wifi, Zap } from "lucide-react"
 import Link from "next/link"
 
 export default function Home() {
-  const companies = [
-    {
-      name: "Volt Wheels",
-      slug: "volt-wheels",
-      description: "EV mobility solutions and intelligent charging infrastructure for the future of transportation.",
-      color: "#0066FF",
-      icon: <Zap size={28} />,
-    },
-    {
-      name: "SRS Enterprise",
-      slug: "srs-enterprise",
-      description: "Power distribution and renewable energy systems for sustainable business growth.",
-      color: "#1DB954",
-      icon: <Leaf size={28} />,
-    },
-    {
-      name: "NRG Future",
-      slug: "nrg-future",
-      description: "Energy solutions and smart grid technology powering tomorrow's infrastructure.",
-      color: "#FF6B35",
-      icon: <Grid3X3 size={28} />,
-    },
-  ]
-
   const services = [
     {
       title: "EV Charging Solutions",
       description: "Comprehensive charging infrastructure for residential, commercial, and fleet applications.",
       link: "/companies/volt-wheels",
+      icon: <Zap size={32} className="text-primary" />,
     },
     {
-      title: "Energy Management",
-      description: "Smart grid technology and renewable energy systems for sustainable operations.",
-      link: "/companies/srs-enterprise",
-    },
-    {
-      title: "IoT Integration",
-      description: "Advanced monitoring and control systems for optimized energy consumption.",
-      link: "/companies/nrg-future",
+      title: "IoT Monitoring",
+      description: "Advanced monitoring and control systems for optimized energy consumption and fleet management.",
+      link: "/iot-tech",
+      icon: <Wifi size={32} className="text-primary" />,
     },
   ]
 
@@ -55,25 +27,27 @@ export default function Home() {
       {/* Hero Carousel Section */}
       <HeroCarousel />
 
-      {/* Services/Products Section */}
+      {/* Services Section */}
       <section className="px-4 py-20 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Services</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive EV solutions for modern transportation needs
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, idx) => (
               <div key={idx} className="group relative overflow-hidden rounded-xl border border-border hover:border-primary transition-all duration-300 hover:shadow-lg">
-                <div className="relative h-64 bg-gradient-to-br from-primary/10 to-secondary/20 overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-6xl opacity-20">
-                      {idx === 0 ? "⚡" : idx === 1 ? "🌱" : "🔋"}
-                    </div>
-                  </div>
+                <div className="relative h-48 bg-gradient-to-br from-primary/10 to-secondary/20 overflow-hidden flex items-center justify-center">
+                  {service.icon}
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
                   <p className="text-muted-foreground text-sm mb-4">{service.description}</p>
                   <Link href={service.link}>
                     <Button variant="ghost" className="w-full justify-between group-hover:text-primary">
-                      CONTINUE
+                      Learn More
                       <ArrowRight size={16} />
                     </Button>
                   </Link>
@@ -113,8 +87,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Euler Motors Products Section */}
+      {/* Vehicle Leasing Section */}
       <section className="px-4 py-20 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Vehicle Leasing Services</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Flexible EV vehicle leasing solutions for personal and business use. Choose from daily, monthly, or yearly plans.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            {[
+              {
+                title: "Short-term Leasing",
+                description: "Daily and weekly EV rentals for events, trips, and temporary needs",
+                link: "/leasing",
+              },
+              {
+                title: "Long-term Leasing",
+                description: "Monthly and yearly plans with maintenance included for businesses",
+                link: "/leasing",
+              },
+              {
+                title: "Fleet Leasing",
+                description: "Commercial fleet solutions for companies with multiple vehicles",
+                link: "/leasing",
+              },
+            ].map((service, idx) => (
+              <div key={idx} className="group relative overflow-hidden rounded-xl border border-border hover:border-primary transition-all duration-300 hover:shadow-lg">
+                <div className="relative h-48 bg-gradient-to-br from-primary/10 to-secondary/20 overflow-hidden flex items-center justify-center">
+                  <div className="text-5xl opacity-30">🚗</div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">{service.description}</p>
+                  <Link href={service.link}>
+                    <Button variant="ghost" className="w-full justify-between group-hover:text-primary">
+                      VIEW LEASING OPTIONS
+                      <ArrowRight size={16} />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <Button asChild size="lg">
+              <Link href="/leasing">
+                Explore All Leasing Services
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Euler Motors Products Section */}
+      <section className="px-4 py-20 bg-secondary/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
@@ -173,22 +202,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Companies Section */}
-      <section id="companies" className="px-4 py-20 bg-secondary/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Companies</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Integrated solutions across mobility, power distribution, and energy technology
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {companies.map((company) => (
-              <CompanyCard key={company.slug} {...company} />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Form Section */}
       <section id="contact" className="px-4 py-20 bg-secondary/30">
@@ -283,21 +296,21 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-4">Companies</h4>
+              <h4 className="font-semibold text-foreground mb-4">Services</h4>
               <ul className="space-y-2">
                 <li>
                   <Link href="/companies/volt-wheels" className="text-sm text-muted-foreground hover:text-primary transition">
-                    Volt Wheels
+                    EV Charging Solutions
                   </Link>
                 </li>
                 <li>
-                  <Link href="/companies/srs-enterprise" className="text-sm text-muted-foreground hover:text-primary transition">
-                    SRS Enterprise
+                  <Link href="/iot-tech" className="text-sm text-muted-foreground hover:text-primary transition">
+                    IoT Technology
                   </Link>
                 </li>
                 <li>
-                  <Link href="/companies/nrg-future" className="text-sm text-muted-foreground hover:text-primary transition">
-                    NRG Future
+                  <Link href="/products/euler-motors" className="text-sm text-muted-foreground hover:text-primary transition">
+                    Euler Motors Products
                   </Link>
                 </li>
               </ul>
